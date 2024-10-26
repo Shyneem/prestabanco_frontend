@@ -38,11 +38,11 @@ export default function Navbar() {
           </IconButton>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Presta Banco: Obten tus creditos con nosotros!
+            Presta Banco: Obten tus créditos con nosotros!
           </Typography>
           <ButtonGroup variant="contained" aria-label="Basic button group">
 
-            {/*
+            
             <Link
               to="/login"
                 style={{ textDecoration: "none", marginBottom: "1rem" }}
@@ -55,7 +55,7 @@ export default function Navbar() {
                   Iniciar sesión
                 </Button>
             </Link>
-          */}
+          
 
 
             <Link

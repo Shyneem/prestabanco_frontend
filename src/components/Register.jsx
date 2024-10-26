@@ -67,7 +67,7 @@ const Register = () => {
             value={rut}
             variant="standard"
             onChange={(e) => setRut(e.target.value)}
-            helperText="Ej. 12.587.698-8"
+            helperText="Ej. 12345678-9"
           />
         </FormControl>
 

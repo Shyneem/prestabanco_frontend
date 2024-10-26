@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Register from "./components/Register";
+import Login from "./components/Login";
 /*import EmployeeList from './components/EmployeesList';
 import AddEditEmployee from './components/AddEditEmployee';
 import ExtraHoursList from './components/ExtraHoursList';
@@ -24,7 +25,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home/>} />
             <Route path="*" element={<NotFound/>} />
-            
+            <Route path= "/login" element={<Login/>} /> 
             <Route path="/register" element={<Register/>}/>
           </Routes>
         </div>

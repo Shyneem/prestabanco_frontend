@@ -1,8 +1,8 @@
 const Home = () => {
     return (
       <div>
-        <h1>Presta banco</h1>
-        <p>
+        <h1 style={{color:'black'}}>Presta banco</h1>
+        <p style={{color:"black"}}>
           Presta Banco es una aplicacion que permite realizar prestamos de dinero para financiar la compra de inmuebles.
           Esta aplicación ha sido desarrollada usando tecnologías como{" "}
           <a href="https://spring.io/projects/spring-boot">Spring Boot</a> (para
@@ -16,4 +16,3 @@ const Home = () => {
   };
   
   export default Home;
-  
