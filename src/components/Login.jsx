@@ -7,13 +7,18 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useState } from "react";
 import auth from "../services/auth.service"; 
 import { useNavigate } from "react-router-dom";
+import {useAuth} from "../contexts/auth.context";
+
+
 
 const Login = () => {
   const [rut, setRut] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
+
+  const {login} = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -22,7 +27,8 @@ const Login = () => {
 
     auth(user) 
       .then((response) => {
-        console.log("Inicio de sesión correcto", response.data);
+        console.log("Inicio de sesión correcto", response.data);  
+        login();
         navigate("/home");
       })
       .catch((error) => {

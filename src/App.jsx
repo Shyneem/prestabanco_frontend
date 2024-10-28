@@ -1,36 +1,36 @@
-import { useState } from 'react'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
 import Navbar from "./components/Navbar";
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Register from "./components/Register";
 import Login from "./components/Login";
-/*import EmployeeList from './components/EmployeesList';
-import AddEditEmployee from './components/AddEditEmployee';
-import ExtraHoursList from './components/ExtraHoursList';
-import AddEditExtraHours from './components/AddEditExtraHours';
-import PaycheckList from './components/PaycheckList';
-import PaycheckCalculate from './components/PaycheckCalculate';
-import AnualReport from './components/AnualReport';
-*/
-
+import { useAuth } from "./contexts/auth.context";
+import Sidemenu from "./components/Sidemenu";
+import { useState } from 'react';
 
 function App() {
+  const { isAuthenticated } = useAuth();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
+  };
 
   return (
     <Router>
-        <div className="container">
-        <Navbar></Navbar>
-          <Routes>
-            <Route path="/home" element={<Home/>} />
-            <Route path="*" element={<NotFound/>} />
-            <Route path= "/login" element={<Login/>} /> 
-            <Route path="/register" element={<Register/>}/>
-          </Routes>
-        </div>
+      <div className="container">
+        <Navbar toggleDrawer={toggleDrawer} />
+        {isAuthenticated && <Sidemenu open={drawerOpen} toggleDrawer={toggleDrawer} />}
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </div>
     </Router>
-);
+  );
 }
 
-export default App
+export default App;

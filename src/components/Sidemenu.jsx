@@ -16,10 +16,17 @@ import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
 import MoreTimeIcon from "@mui/icons-material/MoreTime";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/auth.context";
 
 
 export default function Sidemenu({ open, toggleDrawer }) {
+
+
+  const {isAuntenthicated} = useAuth();
+
   const navigate = useNavigate();
+
+  
 
   const listOptions = () => (
     <Box
@@ -38,17 +45,12 @@ export default function Sidemenu({ open, toggleDrawer }) {
 
         <ListItemButton onClick={() => navigate("/employee/list")}>
           <ListItemIcon>
-            <PeopleAltIcon />
+            <CalculateIcon />
           </ListItemIcon>
-          <ListItemText primary="Empleados" />
+          <ListItemText primary="Simular crédito" />
         </ListItemButton>
 
-        <ListItemButton onClick={() => navigate("/extraHours/list")}>
-          <ListItemIcon>
-            <MoreTimeIcon />
-          </ListItemIcon>
-          <ListItemText primary="Horas Extra" />
-        </ListItemButton>
+        
 
         <ListItemButton onClick={() => navigate("/paycheck/list")}>
           <ListItemIcon>
@@ -73,28 +75,11 @@ export default function Sidemenu({ open, toggleDrawer }) {
 
       <Divider />
 
-      <List>
-        <ListItemButton onClick={() => navigate("/employee/discounts")}>
-          <ListItemIcon>
-            <DiscountIcon />
-          </ListItemIcon>
-          <ListItemText primary="Descuentos" />
-        </ListItemButton>
-        <ListItemButton onClick={() => navigate("/paycheck/vacations")}>
-          <ListItemIcon>
-            <HailIcon />
-          </ListItemIcon>
-          <ListItemText primary="Vacaciones" />
-        </ListItemButton>
-        <ListItemButton onClick={() => navigate("/paycheck/medicalleave")}>
-          <ListItemIcon>
-            <MedicationLiquidIcon />
-          </ListItemIcon>
-          <ListItemText primary="Licencias Medicas" />
-        </ListItemButton>
-      </List>
+    
     </Box>
   );
+
+  //if(!isAuntenthicated) return null;
 
   return (
     <div>
