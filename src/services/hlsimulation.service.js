@@ -1,22 +1,22 @@
 import httpClient from "../http-common";
 
 const getAll = (rut) => {
-    return httpClient.get('/api/v1/hlsimulations/',(params(rut)));
+    return httpClient.get('/api/v1/simulations/',(params(rut)));
 }
 
-const create = data => {
-    return httpClient.post("/api/v1/hlsimulations/", data);
+const calculatePayment = data => {
+    return httpClient.post("/api/v1/simulations/monthly-payment", data);
 }
 
 const get = id => {
-    return httpClient.get(`/api/v1/hlsimulations/${id}`);
+    return httpClient.get(`/api/v1/simulations/${id}`);
 }
 
 const update = data => {
-    return httpClient.put('/api/v1/hlsimulations/', data);
+    return httpClient.put('/api/v1/simulations/', data);
 }
 
 const remove = id => {
-    return httpClient.delete(`/api/v1/hlsimulations/${id}`);
+    return httpClient.delete(`/api/v1/simulations/${id}`);
 }
-export default { getAll, create, get, update, remove };
+export default { getAll, calculatePayment, get, update, remove };

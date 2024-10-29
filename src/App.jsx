@@ -5,9 +5,11 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Register from "./components/Register";
 import Login from "./components/Login";
-import { useAuth } from "./contexts/auth.context";
+import Simulation from "./components/Simulation";
 import Sidemenu from "./components/Sidemenu";
+import { useAuth } from "./contexts/auth.context";
 import { useState } from 'react';
+import SimulationResponse from './components/SimulationResponse';
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -27,6 +29,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/simulation" element={<Simulation/>}/>
+          <Route path="/simulationResponse" element={<SimulationResponse/>}/>
         </Routes>
       </div>
     </Router>

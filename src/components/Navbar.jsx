@@ -43,13 +43,18 @@ export default function Navbar() {
 
           {isAuthenticated ? ( // Muestra botones solo si el usuario está autenticado
             <>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={logout} // Llama a la función de logout
+            <Link
+              to="/home"
+              style={{ textDecoration: "none", marginBottom: "1rem" }}
               >
-                Cerrar sesión
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={logout} // Llama a la función de logout
+                >
+                  Cerrar sesión
               </Button>
+            </Link>
             </>
           ) : (
             <ButtonGroup variant="contained" aria-label="Basic button group">

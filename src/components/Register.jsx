@@ -21,13 +21,14 @@ const Register = () => {
     e.preventDefault();
 
     const user = { rut, name, lastname, id, password };
-    if (id) {
+    console.log(user)
+    /*if (id) {
       // Actualizar Datos usuario
       userService
         .update(user)
         .then((response) => {
           console.log("Usuario ha sido actualizado.", response.data);
-          navigate("/home");
+          //navigate("/home");
         })
         .catch((error) => {
           console.log("Ha ocurrido un error al intentar actualizar datos del usuario.", error);
@@ -44,6 +45,7 @@ const Register = () => {
           console.log("Ha ocurrido un error al intentar crear nuevo usuario.", error);
         });
     }
+        */
   };
 
 
@@ -109,17 +111,17 @@ const Register = () => {
         <Box>
             <FormControl>
             
-            <Button
-                variant="contained"
-                color="info"
-                type="submit"
-                display= "flex"
-                style={{ marginLeft: "0.5rem" }}
-                startIcon={<SaveIcon />}
-            >
-                
-                Registrar
-            </Button>
+              <Button
+                  variant="contained"
+                  color="info"
+                  type="submit"
+                  display= "flex"
+                  style={{ marginLeft: "0.5rem" }}
+                  startIcon={<SaveIcon />}
+              >
+                  
+                  Registrar
+              </Button>
             </FormControl>
         </Box>
 
