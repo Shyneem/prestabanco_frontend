@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { useAuth } from "./contexts/auth.context";
+import { useState } from 'react';
+
+//Vistas de componentes
 import Navbar from "./components/Navbar";
 import Home from './components/Home';
 import NotFound from './components/NotFound';
@@ -7,9 +11,12 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Simulation from "./components/Simulation";
 import Sidemenu from "./components/Sidemenu";
-import { useAuth } from "./contexts/auth.context";
-import { useState } from 'react';
+import LoanRequest from "./components/LoanRequest"
 import SimulationResponse from './components/SimulationResponse';
+import PrimeraVivienda from "./components/PrimeraVivienda";
+import SegundaVivienda from "./components/SegundaVivienda";
+import ComercialRealState from './components/ComercialRealState';
+import Remodeling from './components/Remodeling';
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -31,6 +38,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/simulation" element={<Simulation/>}/>
           <Route path="/simulationResponse" element={<SimulationResponse/>}/>
+          <Route path="/loanRequest" element={<LoanRequest/>}/>
+          <Route path="/primeraVivienda" element={<PrimeraVivienda/>}/>
+          <Route path="/segundaVivienda" element={<SegundaVivienda/>}/>
+          <Route path="/comercialRealState" element={<ComercialRealState/>}/>
+          <Route path="/remodeling" element={<Remodeling/>}/>
         </Routes>
       </div>
     </Router>

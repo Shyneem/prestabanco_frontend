@@ -10,11 +10,6 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PaidIcon from "@mui/icons-material/Paid";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
-import DiscountIcon from "@mui/icons-material/Discount";
-import HailIcon from "@mui/icons-material/Hail";
-import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
-import MoreTimeIcon from "@mui/icons-material/MoreTime";
-import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth.context";
 
@@ -52,24 +47,24 @@ export default function Sidemenu({ open, toggleDrawer }) {
 
         
 
-        <ListItemButton onClick={() => navigate("/paycheck/list")}>
+        <ListItemButton onClick={() => navigate("/loanRequest")}>
           <ListItemIcon>
             <PaidIcon />
           </ListItemIcon>
-          <ListItemText primary="Planilla Sueldos" />
+          <ListItemText primary="Postular a crédito" />
         </ListItemButton>
 
-        <ListItemButton onClick={() => navigate("/paycheck/calculate")}>
+        <ListItemButton onClick={() => navigate("*")}>
           <ListItemIcon>
             <CalculateIcon />
           </ListItemIcon>
-          <ListItemText primary="Calcular Planilla" />
+          <ListItemText primary="En construcción" />
         </ListItemButton>
-        <ListItemButton onClick={() => navigate("/reports/AnualReport")}>
+        <ListItemButton onClick={() => navigate("*")}>
           <ListItemIcon>
             <AnalyticsIcon />
           </ListItemIcon>
-          <ListItemText primary="Gráficos Planillas" />
+          <ListItemText primary="En construcción" />
         </ListItemButton>
       </List>
 

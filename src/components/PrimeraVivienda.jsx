@@ -1,59 +1,90 @@
-import * as React from 'react';
+import React from 'react';
 import { useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from "@mui/material/FormControl";
-import simulationService from "../services/hlsimulation.service";
 import Divider from '@mui/material/Divider';
 import Button from "@mui/material/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
-import SimulationResponse from './SimulationResponse';
+import loanRequestService from "../services/loanRequest.service"
+import fileUploadService from '../services/fileUpload.service';
 
-const Simulation = () =>{
-    const [rut, setRut] = useState("");
-    const [name, setName] = useState("");
-    const [loanAmount, setLoanAmount] = useState(10000000);
-    const [interestRate, setInterestRate] = useState(4.5);
-    const [years, setYears] = useState(20);
-    const { id } = useParams();
-    const { monthlyPayment } = useParams();
+
+
+
+const PrimeraVivienda = () => {
+
+
+  const [hasError, setHasError] = useState(false);
+  const [rut, setRut] = useState("");
+  const [loanAmount, setLoanAmount] = useState(10000000);
+  const [interestRate, setInterestRate] = useState(4.5);
+  const [years, setYears] = useState(20);
+  const {id} = useParams();
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+
+  const handleFileChange = (event) => {
+    setSelectedFiles(event.target.files); 
+};
+
+
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
     
-    const navigate = useNavigate();
+
+    if(selectedFiles.length !== 3){
+      alert("Ingrese los 3 documentos pedidos");
+      return; 
+    }
+
+    const loanRequest = {
+      rut,
+      loanAmount: parseInt(loanAmount, 10), 
+      interestRate: parseFloat(interestRate), 
+      years: parseInt(years, 10),
+      id
+  };
+
+  try{
+  
+    //Se envia primeramente la solicitud para obtener el id
+  loanRequestService
+    .create(loanRequest)
+    .then((response) =>{
+      console.log("Solicitud enviada",response.data)
+      const loanRequestId = response.data.id;
+      const formData = new FormData();
+      for (const file of selectedFiles) {
+        formData.append("files", file);
+      }
+      formData.append("loanRequestId", loanRequestId);
+
+      console.log(formData)
+      fileUploadService
+        .create(formData)
+        .then((response) =>{
+          console.log("Archivos enviados",response.data)
+        });
+        })
+        .catch((error)=>{
+          console.log("Ha ocurrido un error",error)
+        })
 
 
-    const [hasError, setHasError] = useState(false);
+    }catch(error){
+      console.log("Ha ocurrido un error",error)
+    }
     
 
-    const handleSubmit = (e)=> {
-        e.preventDefault();
+  }
 
-        const hlSimulation = {
-            rut,
-            name,
-            loanAmount: parseInt(loanAmount, 10), 
-            interestRate: parseFloat(interestRate), 
-            years: parseInt(years, 10),
-            id,
-            monthlyPayment
-        };
 
-        
-        simulationService
-            .calculatePayment(hlSimulation)
-            .then((response) =>{
-                console.log("Simulacion creada",response.data);
-                navigate("/simulationResponse", { state: { simulationData: response.data } });
-            })
-            .catch((error) => {
-                console.log("Ha ocurrido un erorr",error);
-            });
-            
-    };
-
-    return (
+  return (
         <form onSubmit={handleSubmit}>
             <Box
             sx={{ display: 'flex', flexWrap: 'wrap' }}
@@ -71,20 +102,7 @@ const Simulation = () =>{
                     {hasError && <FormHelperText>Este campo es obligatorio.</FormHelperText>}
                 </FormControl>
 
-
-                <FormControl fullWidth variant="outlined" >
-                    <TextField
-                        label="Nombre"
-                        id="name"
-                        value={name}
-                        helperText="Ej. Mi primera casa"
-                        sx={{ m: 1, width: '25ch' }}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </FormControl>
-
                 
-
                 <FormControl fullWidth variant="outlined" error={hasError} required>
                     <TextField
                         label="Tasa de interés"
@@ -117,10 +135,20 @@ const Simulation = () =>{
                     <OutlinedInput
                         id="outlined-adornment-amount"
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                        label="Amount"
+                        label="amount"
+                        value={loanAmount}
                         onChange={(e) => setLoanAmount(e.target.value)}
                     />
                 </FormControl>
+
+                <TextField
+                  type="file"
+                  variant="filled"
+                  onChange={handleFileChange}
+                  disabled={false}
+                  inputProps={{ multiple: true }} // Permite seleccionar múltiples archivos
+                  sx={{ mt: 2 }}
+                  />
                 </div>
                 <FormControl>
                 <Divider/>
@@ -130,14 +158,14 @@ const Simulation = () =>{
                     variant="contained"
                     
                 >
-                    Calcular pago mensual
+                    Enviar Solicitud
                     </Button>
                 </FormControl>
             
             </Box>
         </form>
       );
-    
 };
 
-export default Simulation;
+export default PrimeraVivienda;
+
