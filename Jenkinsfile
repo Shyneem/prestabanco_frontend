@@ -5,7 +5,7 @@ pipeline {
             steps{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Shyneem/prestabanco_frontend.git']])
                 bat 'npm install'
-                bat 'npm ruin build'
+                bat 'npm run build'
 
             }
         }
