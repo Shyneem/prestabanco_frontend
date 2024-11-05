@@ -19,10 +19,10 @@ const Register = () => {
 
   const saveUser = (e) => {
     e.preventDefault();
-
+    
     const user = { rut, name, lastname, id, password };
     console.log(user)
-    /*if (id) {
+    if (id) {
       // Actualizar Datos usuario
       userService
         .update(user)
@@ -45,7 +45,7 @@ const Register = () => {
           console.log("Ha ocurrido un error al intentar crear nuevo usuario.", error);
         });
     }
-        */
+        
   };
 
 
