@@ -22,29 +22,19 @@ const Register = () => {
     
     const user = { rut, name, lastname, id, password };
     console.log(user)
-    if (id) {
-      // Actualizar Datos usuario
-      userService
-        .update(user)
-        .then((response) => {
-          console.log("Usuario ha sido actualizado.", response.data);
-          //navigate("/home");
-        })
-        .catch((error) => {
-          console.log("Ha ocurrido un error al intentar actualizar datos del usuario.", error);
-        });
-    } else {
+    
       // Crear nuevo usuario
-      userService
-        .create(user)
-        .then((response) => {
-          console.log("Usuario ha sido añadido.", response.data);
-          navigate("/home");
-        })
-        .catch((error) => {
-          console.log("Ha ocurrido un error al intentar crear nuevo usuario.", error);
-        });
-    }
+    userService
+      .create(user)
+      .then((response) => {
+        console.log("Usuario ha sido añadido.", response.data);
+        alert("Registro existoso");
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log("Ha ocurrido un error al intentar crear nuevo usuario.", error);
+      });
+    
         
   };
 

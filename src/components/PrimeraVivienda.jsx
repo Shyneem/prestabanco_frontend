@@ -154,7 +154,7 @@ const PrimeraVivienda = () => {
                 <Divider/>
                     <Button
                     type="submit"
-                    color="primary"
+                    color="secondary"
                     variant="contained"
                     
                 >
