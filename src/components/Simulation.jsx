@@ -118,6 +118,7 @@ const Simulation = () =>{
                         id="outlined-adornment-amount"
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
                         label="Amount"
+                        value={e.target.value}
                         onChange={(e) => setLoanAmount(e.target.value)}
                     />
                 </FormControl>
