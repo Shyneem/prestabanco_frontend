@@ -40,7 +40,7 @@ const Simulation = () =>{
             monthlyPayment
         };
 
-        
+        console.log(hlSimulation);
         simulationService
             .calculatePayment(hlSimulation)
             .then((response) =>{
@@ -118,7 +118,7 @@ const Simulation = () =>{
                         id="outlined-adornment-amount"
                         startAdornment={<InputAdornment position="start">$</InputAdornment>}
                         label="Amount"
-                        value={e.target.value}
+                        value={loanAmount}
                         onChange={(e) => setLoanAmount(e.target.value)}
                     />
                 </FormControl>
