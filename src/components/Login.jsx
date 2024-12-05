@@ -11,6 +11,8 @@ import {useAuth} from "../contexts/auth.context";
 
 
 
+
+
 const Login = () => {
   const [rut, setRut] = useState("");
   const [password, setPassword] = useState("");
@@ -27,9 +29,17 @@ const Login = () => {
 
     auth(user) 
       .then((response) => {
-        console.log("Inicio de sesión correcto", response.data);  
-        login();
-        navigate("/home");
+        if (response.data.rut != null && response.data.id != null) {
+          console.log("Inicio de sesión correcto", response.data);
+          login(response.data);
+          navigate("/home");
+        }
+       else {
+        // Si el rut o id son null, lanzar un error
+        alert("Usuario no encontrado o credenciales incorrectas")
+      }
+        
+        
       })
       .catch((error) => {
         console.log("Ha ocurrido un error en el inicio de sesión", error);

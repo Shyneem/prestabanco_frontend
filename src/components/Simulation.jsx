@@ -11,6 +11,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import SimulationResponse from './SimulationResponse';
+import { useAuth } from "../contexts/auth.context";
 
 const Simulation = () =>{
     const [rut, setRut] = useState("");
@@ -23,11 +24,15 @@ const Simulation = () =>{
     
     const navigate = useNavigate();
 
+    const { user } = useAuth(); 
+    
 
     const [hasError, setHasError] = useState(false);
     
 
     const handleSubmit = (e)=> {
+        
+        
         e.preventDefault();
 
         const hlSimulation = {
@@ -41,8 +46,9 @@ const Simulation = () =>{
         };
 
         console.log(hlSimulation);
+        console.log(user); 
         simulationService
-            .calculatePayment(hlSimulation)
+            .calculatePayment(user.id,hlSimulation)
             .then((response) =>{
                 console.log("Simulacion creada",response.data);
                 navigate("/simulationResponse", { state: { simulationData: response.data } });
