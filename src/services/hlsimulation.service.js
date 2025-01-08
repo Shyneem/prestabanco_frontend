@@ -1,7 +1,7 @@
 import httpClient from "../http-common";
 
 const getAll = (rut) => {
-    return httpClient.get('/api/v1/simulations/',(params(rut)));
+    return httpClient.get('/users/simulations/',(params(rut)));
 }
 
 const calculatePayment = (id,data) => {

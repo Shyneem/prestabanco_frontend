@@ -12,7 +12,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/auth.context"; // Importa el contexto de autenticación
+import { useAuth } from "../contexts/auth.context"; 
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

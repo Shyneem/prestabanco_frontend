@@ -10,24 +10,16 @@ import ListItemText from "@mui/material/ListItemText";
 import PaidIcon from "@mui/icons-material/Paid";
 import CalculateIcon from "@mui/icons-material/Calculate";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
+import ArticleIcon from '@mui/icons-material/Article';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth.context";
 
-
 export default function Sidemenu({ open, toggleDrawer }) {
-
-
-  const {isAuntenthicated} = useAuth();
-
+  const { isAuntenthicated } = useAuth();
   const navigate = useNavigate();
 
-  
-
   const listOptions = () => (
-    <Box
-      role="presentation"
-      onClick={toggleDrawer(false)}
-    >
+    <Box role="presentation" onClick={toggleDrawer(false)}>
       <List>
         <ListItemButton onClick={() => navigate("/home")}>
           <ListItemIcon>
@@ -45,8 +37,6 @@ export default function Sidemenu({ open, toggleDrawer }) {
           <ListItemText primary="Simular crédito" />
         </ListItemButton>
 
-        
-
         <ListItemButton onClick={() => navigate("/loanRequest")}>
           <ListItemIcon>
             <PaidIcon />
@@ -54,23 +44,24 @@ export default function Sidemenu({ open, toggleDrawer }) {
           <ListItemText primary="Postular a crédito" />
         </ListItemButton>
 
-        <ListItemButton onClick={() => navigate("*")}>
+        <ListItemButton onClick={() => navigate("/loanRequestList")}>
           <ListItemIcon>
-            <CalculateIcon />
+            <ArticleIcon />
           </ListItemIcon>
-          <ListItemText primary="En construcción" />
+          <ListItemText primary="Solicitudes" />
         </ListItemButton>
-        <ListItemButton onClick={() => navigate("*")}>
+
+        <Divider />
+
+        <ListItemButton onClick={() => navigate("/evaluation")}>
           <ListItemIcon>
-            <AnalyticsIcon />
+            <ArticleIcon />
           </ListItemIcon>
-          <ListItemText primary="En construcción" />
+          <ListItemText primary="Evaluación de solicitudes" />
         </ListItemButton>
       </List>
 
       <Divider />
-
-    
     </Box>
   );
 

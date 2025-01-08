@@ -17,6 +17,8 @@ import PrimeraVivienda from "./components/PrimeraVivienda";
 import SegundaVivienda from "./components/SegundaVivienda";
 import ComercialRealState from './components/ComercialRealState';
 import Remodeling from './components/Remodeling';
+import LoanRequestList from './components/LoanRequestList';
+import Evaluation from './components/Evaluation';
 
 function App() {
   const { isAuthenticated } = useAuth();
@@ -43,6 +45,8 @@ function App() {
           <Route path="/segundaVivienda" element={<SegundaVivienda/>}/>
           <Route path="/comercialRealState" element={<ComercialRealState/>}/>
           <Route path="/remodeling" element={<Remodeling/>}/>
+          <Route path="/loanRequestList" element={<LoanRequestList/>}/>
+          <Route path="/evaluation" element={<Evaluation/>}/>
         </Routes>
       </div>
     </Router>
