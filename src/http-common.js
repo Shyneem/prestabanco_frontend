@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const prestabancoGatewayServer = import.meta.env.VITE_PRESTABANCO_GATEWAY_IP;
-const prestabancoGatewayPort = import.meta.env.VITE_PRESTABANCO_GATEWAY_PORT;
 
-console.log("Ip backend: "+ prestabancoGatewayServer)
-console.log("Puerto backend: "+prestabancoGatewayPort)
+const kartingGatewayServer = import.meta.env.VITE_KARTING_GATEWAY_IP;
+const kartingGatewayPort = import.meta.env.VITE_KARTING_GATEWAY_PORT;
+
+console.log("Ip backend: "+ kartingGatewayServer)
+console.log("Puerto backend: "+ kartingGatewayPort)
 
 export default axios.create({
-    baseURL: `http://${prestabancoGatewayServer}:${prestabancoGatewayPort}`,
+    baseURL: `http://${kartingGatewayServer}:${kartingGatewayPort}`,
     headers: {
         'Content-Type': 'application/json'
     }
