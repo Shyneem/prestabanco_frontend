@@ -2,7 +2,8 @@
 ```markdown
 # PrestaBanco — Sistema de Gestión y Evaluación de Préstamos (Frontend)
 
-Interfaz web desarrollada en **React** para la simulación, solicitud y seguimiento de créditos bancarios, conectada a la API REST de PrestaBanco.
+Interfaz web desarrollada en **React** para la simulación, solicitud y seguimiento de créditos bancarios,
+conectada a la API REST de PrestaBanco.
 
  **Repositorio Backend (Spring Boot):** [Shyneem/prestaBanco_backend](https://github.com/Shyneem/prestaBanco_backend)
 
