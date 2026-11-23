@@ -6,7 +6,7 @@ Interfaz web desarrollada en **React** para la simulación, solicitud y seguimie
 
  **Repositorio Backend (Spring Boot):** [Shyneem/prestaBanco_backend](https://github.com/Shyneem/prestaBanco_backend)
 
-## 🛠️ Stack Tecnológico
+##  Stack Tecnológico
 * **Frontend:** React, JavaScript (ES6+), HTML5, CSS3
 * **Infraestructura:** Docker, Docker Compose
 
